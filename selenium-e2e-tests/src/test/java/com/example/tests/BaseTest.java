@@ -1,22 +1,20 @@
+package com.example.tests;
 
-
-import org.junit.After;
-import org.junit.Before;
 import org.openqa.selenium.WebDriver;
 import com.example.utils.WebDriverUtils;
+import org.testng.annotations.BeforeMethod;
+import org.testng.annotations.AfterMethod;
 
 public class BaseTest {
-	protected WebDriver driver;
+    protected WebDriver driver;
 
-	@Before
-	public void setUp() {
-		driver = WebDriverUtils.createDriver();
-	}
+    @BeforeMethod
+    public void setUp() {
+        driver = WebDriverUtils.getDriver();
+    }
 
-	@After
-	public void tearDown() {
-		if (driver != null) {
-			driver.quit();
-		}
-	}
+    @AfterMethod
+    public void tearDown() {
+        WebDriverUtils.quitDriver();
+    }
 }
